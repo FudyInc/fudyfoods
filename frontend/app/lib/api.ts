@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000'
+type ProductPayload = Record<string, unknown>
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -13,8 +14,8 @@ export const api = axios.create({
 export const productAPI = {
   getAll: () => api.get('/products/'),
   getById: (id: number) => api.get(`/products/${id}`),
-  create: (data: any) => api.post('/products/', data),
-  update: (id: number, data: any) => api.put(`/products/${id}`, data),
+  create: (data: ProductPayload) => api.post('/products/', data),
+  update: (id: number, data: ProductPayload) => api.put(`/products/${id}`, data),
   delete: (id: number) => api.delete(`/products/${id}`),
 }
 

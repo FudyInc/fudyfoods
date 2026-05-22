@@ -1,16 +1,16 @@
 'use client'
 
-import React from 'react'
-import { TrendingUp, Package, ShoppingCart, DollarSign } from 'lucide-react'
+import type { FC, ReactNode } from 'react'
+import { TrendingUp } from 'lucide-react'
 
 interface MetricCardProps {
   title: string
   value: string | number
-  icon: React.ReactNode
+  icon: ReactNode
   trend?: string
 }
 
-export const MetricCard: React.FC<MetricCardProps> = ({
+export const MetricCard: FC<MetricCardProps> = ({
   title,
   value,
   icon,
@@ -35,7 +35,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   )
 }
 
-export const DashboardHeader: React.FC = () => {
+export const DashboardHeader: FC = () => {
   return (
     <div className="mb-8">
       <h1 className="text-3xl font-bold text-slate-900">Dashboard</h1>
@@ -44,7 +44,7 @@ export const DashboardHeader: React.FC = () => {
   )
 }
 
-export const LoadingSpinner: React.FC = () => {
+export const LoadingSpinner: FC = () => {
   return (
     <div className="flex items-center justify-center p-8">
       <div className="animate-spin rounded-full h-8 w-8 border-2 border-slate-300 border-t-slate-900"></div>
@@ -52,7 +52,7 @@ export const LoadingSpinner: React.FC = () => {
   )
 }
 
-export const ErrorMessage: React.FC<{ message: string }> = ({ message }) => {
+export const ErrorMessage: FC<{ message: string }> = ({ message }) => {
   return (
     <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
       {message}

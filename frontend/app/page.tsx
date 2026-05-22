@@ -1,16 +1,21 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DashboardHeader, MetricCard, LoadingSpinner, ErrorMessage } from './components/ui'
 import { AnalyticsChart } from './components/analytics'
 import { analyticsAPI } from './lib/api'
 import { TrendingUp, Package, ShoppingCart, DollarSign } from 'lucide-react'
 
+interface TopProduct {
+  product_id: string | number
+  quantity: number
+}
+
 interface DashboardData {
   total_sales: number
   total_products_sold: number
   average_order_value: number
-  top_products: any[]
+  top_products: TopProduct[]
 }
 
 export default function Home() {
@@ -23,8 +28,8 @@ export default function Home() {
       try {
         const response = await analyticsAPI.getDashboard()
         setData(response.data)
-      } catch (err: any) {
-        setError(err.message || 'Failed to load dashboard data')
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load dashboard data')
       } finally {
         setLoading(false)
       }

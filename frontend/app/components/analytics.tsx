@@ -1,20 +1,29 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts'
 import { analyticsAPI } from '../lib/api'
 import { LoadingSpinner, ErrorMessage } from './ui'
+
+interface TopProduct {
+  product_id: string | number
+  quantity: number
+}
 
 interface AnalyticsData {
   total_sales: number
   total_products_sold: number
   average_order_value: number
-  top_products: any[]
+  top_products: TopProduct[]
 }
 
-export const AnalyticsChart: React.FC = () => {
+interface SalesTrendData {
+  trend: Record<string, number>
+}
+
+export const AnalyticsChart: FC = () => {
   const [data, setData] = useState<AnalyticsData | null>(null)
-  const [trend, setTrend] = useState<any>(null)
+  const [trend, setTrend] = useState<SalesTrendData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -27,8 +36,8 @@ export const AnalyticsChart: React.FC = () => {
         ])
         setData(dashboardRes.data)
         setTrend(trendRes.data)
-      } catch (err: any) {
-        setError(err.message || 'Failed to load analytics')
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load analytics')
       } finally {
         setLoading(false)
       }

@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState, type FC } from 'react'
 import { Menu, X } from 'lucide-react'
 
-export const Navbar: React.FC = () => {
+export const Navbar: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
