@@ -1,7 +1,27 @@
 import axios from 'axios'
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000'
-type ProductPayload = Record<string, unknown>
+
+export interface Product {
+  id: number
+  name: string
+  description?: string | null
+  price: number
+  quantity: number
+  created_at: string
+}
+
+export interface ProductPayload {
+  name: string
+  description?: string
+  price: number
+  quantity: number
+}
+
+export interface HealthResponse {
+  status: string
+  message: string
+}
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -12,10 +32,10 @@ export const api = axios.create({
 
 // Products
 export const productAPI = {
-  getAll: () => api.get('/products/'),
-  getById: (id: number) => api.get(`/products/${id}`),
-  create: (data: ProductPayload) => api.post('/products/', data),
-  update: (id: number, data: ProductPayload) => api.put(`/products/${id}`, data),
+  getAll: () => api.get<Product[]>('/products/'),
+  getById: (id: number) => api.get<Product>(`/products/${id}`),
+  create: (data: ProductPayload) => api.post<Product>('/products/', data),
+  update: (id: number, data: ProductPayload) => api.put<Product>(`/products/${id}`, data),
   delete: (id: number) => api.delete(`/products/${id}`),
 }
 
@@ -27,5 +47,5 @@ export const analyticsAPI = {
 
 // Health
 export const healthAPI = {
-  check: () => api.get('/health'),
+  check: () => api.get<HealthResponse>('/health'),
 }

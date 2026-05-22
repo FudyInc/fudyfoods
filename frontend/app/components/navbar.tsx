@@ -23,22 +23,22 @@ export const Navbar: FC = () => {
               Dashboard
             </a>
             <a
-              href="/products"
+              href="/productos"
               className="text-slate-600 hover:text-slate-900 font-medium"
             >
-              Products
+              Productos
             </a>
             <a
-              href="/analytics"
+              href="/ventas"
               className="text-slate-600 hover:text-slate-900 font-medium"
             >
-              Analytics
+              Ventas
             </a>
             <a
-              href="/settings"
+              href="/ajustes"
               className="text-slate-600 hover:text-slate-900 font-medium"
             >
-              Settings
+              Ajustes
             </a>
           </div>
 
@@ -63,22 +63,22 @@ export const Navbar: FC = () => {
               Dashboard
             </a>
             <a
-              href="/products"
+              href="/productos"
               className="block text-slate-600 hover:text-slate-900 font-medium py-2"
             >
-              Products
+              Productos
             </a>
             <a
-              href="/analytics"
+              href="/ventas"
               className="block text-slate-600 hover:text-slate-900 font-medium py-2"
             >
-              Analytics
+              Ventas
             </a>
             <a
-              href="/settings"
+              href="/ajustes"
               className="block text-slate-600 hover:text-slate-900 font-medium py-2"
             >
-              Settings
+              Ajustes
             </a>
           </div>
         )}
