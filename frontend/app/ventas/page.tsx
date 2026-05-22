@@ -12,7 +12,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { CircleDollarSign, ReceiptText, ShoppingCart, TrendingUp } from 'lucide-react'
+import { CircleDollarSign, FileText, ShoppingCart, TrendingUp } from 'lucide-react'
 import { DashboardShell } from '../components/dashboard-shell'
 import { analyticsAPI } from '../lib/api'
 import { compactNumber, formatCurrency, formatDateLabel } from '../lib/format'
@@ -120,7 +120,7 @@ export default function SalesPage() {
     {
       label: 'Ordenes estimadas',
       value: compactNumber(Math.max(1, estimatedOrders)),
-      icon: ReceiptText,
+      icon: FileText,
       accent: 'from-fuchsia-300 to-violet-300',
     },
     {
